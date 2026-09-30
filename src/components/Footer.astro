@@ -1,0 +1,28 @@
+---
+import { FOOTER_CONTENT } from '../data/content';
+---
+
+<footer class="border-t border-gray-800 bg-[#080b0f] py-12">
+  <div class="mx-auto max-w-6xl px-4">
+    <p class="text-sm font-bold text-gray-200">
+      <a href={FOOTER_CONTENT.brandUrl} class="hover:underline text-white focus:outline-none focus:ring-2 focus:ring-emerald-400">
+        {FOOTER_CONTENT.brand}
+      </a>
+      <span class="text-gray-300 font-normal">｜{FOOTER_CONTENT.seriesName}</span>
+    </p>
+
+    <p class="mt-1.5 font-mono text-xs tracking-wider text-gray-300 font-medium">
+      {FOOTER_CONTENT.courseName}
+    </p>
+
+    <p class="mt-4 text-sm">
+      <a 
+        href={FOOTER_CONTENT.introUrl} 
+        class="inline-flex items-center gap-1.5 text-emerald-400 font-bold hover:underline hover:text-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+      >
+        <span>←</span>
+        <span>{FOOTER_CONTENT.introLinkText}</span>
+      </a>
+    </p>
+  </div>
+</footer>

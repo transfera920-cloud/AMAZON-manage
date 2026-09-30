@@ -1,0 +1,68 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { CH07_CONTENT } from '../data/content';
+---
+
+<section id={CH07_CONTENT.id} class="pt-12 scroll-mt-20">
+  <SectionHeader no={CH07_CONTENT.no} title={CH07_CONTENT.title} lead={CH07_CONTENT.lead} />
+
+  <!-- Decision Process -->
+  <div class="bento-card p-5 sm:p-6 bg-[#121820] border-[#232d3b]">
+    <div class="font-mono text-xs font-bold tracking-wider text-emerald-400">
+      DECISION FLOW
+    </div>
+    <h3 class="mt-1 text-base font-bold text-white">七階段固定決策順序</h3>
+    <ol class="mt-4 flex flex-wrap gap-2 sm:gap-3">
+      {CH07_CONTENT.steps.map((step, idx) => (
+        <li class="flex items-center gap-2 rounded bg-[#17202a] px-3 py-2 border border-gray-800 text-xs sm:text-sm text-gray-100 font-medium">
+          <span class="flex h-5 w-5 items-center justify-center rounded bg-emerald-500/25 text-emerald-300 font-mono text-xs font-bold border border-emerald-500/40">
+            {idx + 1}
+          </span>
+          <span>{step}</span>
+          {idx < CH07_CONTENT.steps.length - 1 && (
+            <span class="text-gray-500 ml-1 hidden sm:inline font-bold">→</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <!-- Decision Tree Table -->
+  <div class="mt-6 bento-card p-5 sm:p-6 bg-[#121820] border-[#232d3b]">
+    <h3 class="text-base font-bold text-white mb-3">決策節點與若為「否」的處置方案</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm text-gray-200 border-collapse min-w-[500px]">
+        <caption class="sr-only">{CH07_CONTENT.tableCaption}</caption>
+        <thead>
+          <tr class="border-b border-gray-700 bg-[#0e141b]">
+            {CH07_CONTENT.tableHeaders.map((header) => (
+              <th scope="col" class="py-3 px-4 font-bold text-white">
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-800">
+          {CH07_CONTENT.decisionTree.map((row) => (
+            <tr class="hover:bg-gray-800/60 transition-colors">
+              <th scope="row" class="py-3.5 px-4 font-semibold text-gray-100">
+                {row.question}
+              </th>
+              <td class="py-3.5 px-4 text-amber-200 font-bold">
+                {row.action}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-4 pt-3 border-t border-gray-800">
+      <div class="rounded bg-amber-950/40 border border-amber-500/50 p-3">
+        <p class="text-xs sm:text-sm font-bold text-amber-200">
+          {CH07_CONTENT.principle}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

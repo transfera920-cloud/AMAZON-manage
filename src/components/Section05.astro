@@ -1,0 +1,99 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { CH05_CONTENT } from '../data/content';
+---
+
+<section id={CH05_CONTENT.id} class="pt-12 scroll-mt-20">
+  <SectionHeader no={CH05_CONTENT.no} title={CH05_CONTENT.title} lead={CH05_CONTENT.lead} />
+
+  <!-- FORMATION MAP -->
+  <div class="bento-card p-5 sm:p-6 bg-[#121820] border-[#232d3b]">
+    <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+      <div class="font-mono text-xs font-bold tracking-wider text-emerald-400">
+        FORMATION MAP ／ 隊形結構圖
+      </div>
+      <span class="text-xs text-gray-200 font-bold">前進方向 →</span>
+    </div>
+
+    <div class="mt-5 space-y-4">
+      {CH05_CONTENT.formationMap.map((seg) => (
+        <div class="grid grid-cols-[4.5rem_1fr] md:grid-cols-[6rem_1fr] gap-3 items-stretch">
+          <div class={`flex flex-col items-center justify-center rounded border p-2 text-center ${
+            seg.tone === 'primary' 
+              ? 'border-emerald-500/60 bg-emerald-950/40 text-emerald-200' 
+              : seg.tone === 'alpine' 
+                ? 'border-sky-500/60 bg-sky-950/40 text-sky-200' 
+                : 'border-amber-500/60 bg-amber-950/40 text-amber-200'
+          }`}>
+            <span class="text-sm font-bold">{seg.segment}</span>
+            <span class="text-[10px] font-semibold opacity-90 mt-0.5">
+              {seg.segment === '前段' ? '領航控速' : seg.segment === '中段' ? '主力觀察' : '殿後確認'}
+            </span>
+          </div>
+
+          <div class="rounded border border-gray-800 bg-[#17202a] p-3 sm:p-4">
+            <div class="flex flex-wrap gap-2">
+              {seg.roles.map((r) => (
+                <span class="rounded bg-gray-800 px-2.5 py-1 text-xs font-bold text-white border border-gray-600">
+                  {r}
+                </span>
+              ))}
+            </div>
+            <p class="mt-2.5 text-xs text-gray-100 font-medium leading-relaxed">
+              {seg.notes.join('　·　')}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-6 pt-4 border-t border-gray-800">
+      <div class="rounded bg-amber-950/40 border border-amber-500/50 p-3.5">
+        <p class="text-xs sm:text-sm font-bold text-amber-200 leading-relaxed">
+          {CH05_CONTENT.sightPrinciple}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roles & Sorting Warning -->
+  <div class="mt-6 grid gap-4 md:grid-cols-2">
+    <!-- ROLES -->
+    <div class="bento-card p-5 bg-[#121820] border-[#232d3b]">
+      <div class="font-mono text-xs font-bold tracking-wider text-emerald-400">
+        ROLES
+      </div>
+      <h3 class="mt-1 text-base font-bold text-white">{CH05_CONTENT.rolesTitle}</h3>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {CH05_CONTENT.roles.map((role) => (
+          <span class="rounded-md border border-gray-600 bg-gray-800 px-3 py-1.5 text-xs font-semibold text-white">
+            {role}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Sorting Warning -->
+    <div class="bento-card p-5 bg-[#121820] border-[#232d3b]">
+      <div class="font-mono text-xs font-bold tracking-wider text-red-400">
+        WARNING
+      </div>
+      <h3 class="mt-1 text-base font-bold text-white">{CH05_CONTENT.sortingWarningTitle}</h3>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {CH05_CONTENT.sortingFactors.map((factor) => (
+          <span class="rounded-md border border-amber-500/50 bg-amber-950/40 px-3 py-1.5 text-xs font-bold text-amber-200">
+            {factor}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4 bento-card p-4 text-center bg-[#121820] border-[#232d3b]">
+    <div class="rounded bg-emerald-950/40 border border-emerald-500/40 p-3">
+      <p class="text-sm font-bold text-emerald-300">
+        核心：{CH05_CONTENT.core}
+      </p>
+    </div>
+  </div>
+</section>

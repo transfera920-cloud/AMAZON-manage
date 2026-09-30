@@ -1,0 +1,42 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { CH10_CONTENT } from '../data/content';
+---
+
+<section id={CH10_CONTENT.id} class="pt-12 scroll-mt-20">
+  <SectionHeader no={CH10_CONTENT.no} title={CH10_CONTENT.title} />
+
+  <div class="bento-card p-6 sm:p-8 md:p-10 bg-[#121820] border-emerald-500/40">
+    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-snug tracking-tight text-white">
+      {CH10_CONTENT.headline}
+    </h3>
+
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-lg border border-gray-800 bg-[#17202a] p-4">
+        <div class="font-mono text-xs font-bold tracking-wider text-emerald-400">
+          {CH10_CONTENT.smallTeam.label}
+        </div>
+        <p class="mt-1.5 text-sm sm:text-base text-gray-100 font-medium">
+          {CH10_CONTENT.smallTeam.text}
+        </p>
+      </div>
+
+      <div class="rounded-lg border border-gray-800 bg-[#17202a] p-4">
+        <div class="font-mono text-xs font-bold tracking-wider text-amber-400">
+          {CH10_CONTENT.largeTeam.label}
+        </div>
+        <p class="mt-1.5 text-sm sm:text-base text-gray-100 font-medium">
+          {CH10_CONTENT.largeTeam.text}
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-8 text-sm sm:text-base leading-relaxed text-gray-100 font-normal">
+      {CH10_CONTENT.paragraph}
+    </p>
+
+    <blockquote class="mt-8 border-l-4 border-amber-400 pl-4 sm:pl-6 text-sm sm:text-base leading-loose text-amber-100 font-medium italic bg-amber-950/30 py-4 rounded-r border-t border-b border-r border-amber-500/20">
+      {CH10_CONTENT.quote}
+    </blockquote>
+  </div>
+</section>

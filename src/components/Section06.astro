@@ -1,0 +1,76 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { CH06_CONTENT } from '../data/content';
+---
+
+<section id={CH06_CONTENT.id} class="pt-12 scroll-mt-20">
+  <SectionHeader no={CH06_CONTENT.no} title={CH06_CONTENT.title} lead={CH06_CONTENT.lead} />
+
+  <div class="grid gap-4 lg:grid-cols-3">
+    <!-- Triggers -->
+    <div class="bento-card p-5 bg-[#121820] border-[#232d3b]">
+      <div class="font-mono text-xs font-bold tracking-wider text-amber-400">
+        TRIGGER
+      </div>
+      <h3 class="mt-1 text-base font-bold text-white">可能調整原因</h3>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {CH06_CONTENT.triggers.map((item) => (
+          <span class="rounded bg-amber-950/40 border border-amber-500/50 px-2.5 py-1 text-xs font-bold text-amber-200">
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Methods -->
+    <div class="bento-card p-5 bg-[#121820] border-[#232d3b]">
+      <div class="font-mono text-xs font-bold tracking-wider text-sky-400">
+        METHOD
+      </div>
+      <h3 class="mt-1 text-base font-bold text-white">管理方式</h3>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {CH06_CONTENT.methods.map((item) => (
+          <span class="rounded bg-sky-950/40 border border-sky-500/50 px-2.5 py-1 text-xs font-bold text-sky-200">
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Must Haves -->
+    <div class="bento-card p-5 bg-[#121820] border-[#232d3b]">
+      <div class="font-mono text-xs font-bold tracking-wider text-emerald-400">
+        MUST HAVE
+      </div>
+      <h3 class="mt-1 text-base font-bold text-white">任何調整必須具備</h3>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {CH06_CONTENT.mustHaves.map((item) => (
+          <span class="rounded bg-emerald-950/40 border border-emerald-500/50 px-2.5 py-1 text-xs font-bold text-emerald-200">
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Process -->
+  <div class="mt-6 bento-card p-5 sm:p-6 bg-[#121820] border-[#232d3b]">
+    <div class="font-mono text-xs font-bold tracking-wider text-emerald-400">
+      WORKFLOW
+    </div>
+    <h3 class="mt-1 text-base font-bold text-white">動態調整七步驟流程</h3>
+    <ol class="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+      {CH06_CONTENT.steps.map((step, idx) => (
+        <li class="rounded border border-gray-800 bg-[#17202a] p-3 flex flex-col justify-between">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="flex h-5 w-5 items-center justify-center rounded bg-emerald-500/25 text-emerald-300 font-mono text-xs font-bold border border-emerald-500/40">
+              {idx + 1}
+            </span>
+            <span class="text-xs font-bold text-gray-200">步驟 {idx + 1}</span>
+          </div>
+          <p class="text-xs text-gray-100 font-medium leading-relaxed">{step}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

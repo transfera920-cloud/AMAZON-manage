@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+import Section01 from '../components/Section01.astro';
+import Section02 from '../components/Section02.astro';
+import Section03 from '../components/Section03.astro';
+import Section04 from '../components/Section04.astro';
+import Section05 from '../components/Section05.astro';
+import Section06 from '../components/Section06.astro';
+import Section07 from '../components/Section07.astro';
+import Section08 from '../components/Section08.astro';
+import Section09 from '../components/Section09.astro';
+import Section10 from '../components/Section10.astro';
+import { SITE_METADATA } from '../data/content';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://amazon-hike.com/#organization",
+      "name": SITE_METADATA.brandName,
+      "url": SITE_METADATA.brandUrl
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://amazon-hike.com/intro#website",
+      "name": SITE_METADATA.brandName,
+      "url": SITE_METADATA.introUrl,
+      "publisher": {
+        "@id": "https://amazon-hike.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://amazon-hike.com/chapter21/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": SITE_METADATA.brandUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "登山教育平台",
+          "item": SITE_METADATA.introUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "登山隊伍管理與安全決策",
+          "item": SITE_METADATA.canonicalUrl
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://amazon-hike.com/chapter21/#article",
+      "headline": "登山隊伍管理與安全決策",
+      "name": "登山隊伍管理與安全決策",
+      "description": SITE_METADATA.description,
+      "url": SITE_METADATA.canonicalUrl,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": SITE_METADATA.canonicalUrl
+      },
+      "inLanguage": "zh-Hant-TW",
+      "image": SITE_METADATA.ogImageUrl,
+      "datePublished": SITE_METADATA.datePublished,
+      "dateModified": SITE_METADATA.dateModified,
+      "isPartOf": {
+        "@id": "https://amazon-hike.com/intro#website"
+      },
+      "publisher": {
+        "@id": "https://amazon-hike.com/#organization"
+      },
+      "author": {
+        "@id": "https://amazon-hike.com/#organization"
+      }
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{SITE_METADATA.title}</title>
+    <meta name="description" content={SITE_METADATA.description} />
+    <link rel="canonical" href={SITE_METADATA.canonicalUrl} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="author" content={SITE_METADATA.brandName} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={SITE_METADATA.title} />
+    <meta property="og:description" content={SITE_METADATA.description} />
+    <meta property="og:url" content={SITE_METADATA.canonicalUrl} />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content={SITE_METADATA.brandName} />
+    <meta property="og:image" content={SITE_METADATA.ogImageUrl} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={SITE_METADATA.title} />
+    <meta name="twitter:description" content={SITE_METADATA.description} />
+    <meta name="twitter:image" content={SITE_METADATA.ogImageUrl} />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="min-h-screen bg-[#0b0f14] text-gray-100 flex flex-col">
+    <!-- Skip to main content link for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-emerald-600 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-emerald-400"
+    >
+      跳至主要內容
+    </a>
+
+    <Header />
+    <Hero />
+
+    <main id="main-content" class="mx-auto max-w-6xl px-4 pb-20 w-full flex-1">
+      <article>
+        <Section01 />
+        <Section02 />
+        <Section03 />
+        <Section04 />
+        <Section05 />
+        <Section06 />
+        <Section07 />
+        <Section08 />
+        <Section09 />
+        <Section10 />
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>

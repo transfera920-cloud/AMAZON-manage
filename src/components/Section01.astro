@@ -1,0 +1,79 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { CH01_CONTENT } from '../data/content';
+---
+
+<section id={CH01_CONTENT.id} class="pt-12 scroll-mt-20">
+  <SectionHeader no={CH01_CONTENT.no} title={CH01_CONTENT.title} lead={CH01_CONTENT.lead} />
+
+  <div class="grid gap-4 md:grid-cols-2">
+    <!-- MYTH Card -->
+    <div class="bento-card border-l-4 border-l-red-500 p-5 bg-[#121820] border-[#232d3b]">
+      <div class="font-mono text-xs font-bold tracking-wider text-red-400">
+        MYTH ／ 錯誤觀念
+      </div>
+      <h3 class="mt-1 text-base font-bold text-white">常見的三個誤解</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {CH01_CONTENT.myths.map((item) => (
+          <li class="flex items-center gap-2 rounded bg-red-950/50 px-3.5 py-2.5 border border-red-500/40 text-red-100 font-semibold tracking-wide">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- FACT Card -->
+    <div class="bento-card border-l-4 border-l-emerald-500 p-5 bg-[#121820] border-[#232d3b]">
+      <div class="font-mono text-xs font-bold tracking-wider text-emerald-400">
+        FACT ／ 正確認知
+      </div>
+      <h3 class="mt-1 text-base font-bold text-white">應建立的判斷</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {CH01_CONTENT.facts.map((item) => (
+          <li class="flex items-center gap-2 rounded bg-emerald-950/50 px-3.5 py-2.5 border border-emerald-500/40 text-emerald-100 font-semibold tracking-wide">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="mt-6 bento-card p-4 sm:p-6 bg-[#121820] border-[#232d3b]">
+    <h3 class="text-base font-bold text-white mb-3">隊伍規模風險與優勢比較</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm text-gray-200 border-collapse min-w-[580px]">
+        <caption class="sr-only">{CH01_CONTENT.tableCaption}</caption>
+        <thead>
+          <tr class="border-b border-gray-700 bg-[#0e141b]">
+            {CH01_CONTENT.tableHeaders.map((header) => (
+              <th scope="col" class="py-3 px-4 font-bold text-white">
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-800">
+          {CH01_CONTENT.scales.map((row) => (
+            <tr class="hover:bg-gray-800/60 transition-colors">
+              <th scope="row" class="py-3.5 px-4 font-bold text-emerald-400 whitespace-nowrap">
+                {row.scale}
+              </th>
+              <td class="py-3.5 px-4 text-gray-100 font-medium">{row.advantages}</td>
+              <td class="py-3.5 px-4 text-red-200 font-semibold">{row.risks}</td>
+              <td class="py-3.5 px-4 text-amber-200 font-semibold">{row.focus}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-4 pt-3 border-t border-gray-800">
+      <div class="rounded bg-emerald-950/40 border border-emerald-500/40 p-3 text-center">
+        <p class="text-sm font-bold text-emerald-300">
+          核心：{CH01_CONTENT.core}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

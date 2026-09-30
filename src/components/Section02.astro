@@ -1,0 +1,59 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { CH02_CONTENT } from '../data/content';
+---
+
+<section id={CH02_CONTENT.id} class="pt-12 scroll-mt-20">
+  <SectionHeader no={CH02_CONTENT.no} title={CH02_CONTENT.title} lead={CH02_CONTENT.lead} />
+
+  <div class="grid gap-4 lg:grid-cols-3">
+    <!-- Seven Factors -->
+    <div class="lg:col-span-2 bento-card p-5 bg-[#121820] border-[#232d3b]">
+      <div class="font-mono text-xs font-bold tracking-wider text-amber-400">
+        FACTOR ／ 評估要素
+      </div>
+      <h3 class="mt-1 text-base font-bold text-white">七項關鍵評估指標</h3>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        {CH02_CONTENT.factors.map((factor, index) => (
+          <div class="rounded border border-gray-800 bg-[#17202a] p-3.5">
+            <div class="flex items-center gap-2">
+              <span class="flex h-5 w-5 items-center justify-center rounded-full bg-amber-500/25 text-amber-300 font-mono text-xs font-bold border border-amber-500/40">
+                {index + 1}
+              </span>
+              <h4 class="text-sm font-bold text-white">{factor.name}</h4>
+            </div>
+            <p class="mt-2 text-xs leading-relaxed text-gray-200 font-medium">{factor.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Process -->
+    <div class="bento-card p-5 bg-[#121820] border-[#232d3b] flex flex-col justify-between">
+      <div>
+        <div class="font-mono text-xs font-bold tracking-wider text-emerald-400">
+          PROCESS ／ 評估流程
+        </div>
+        <h3 class="mt-1 text-base font-bold text-white">五步驟決策流程</h3>
+        <ol class="mt-4 space-y-3">
+          {CH02_CONTENT.steps.map((step, idx) => (
+            <li class="flex items-start gap-2.5 rounded bg-[#17202a] p-2.5 border border-gray-800 text-xs sm:text-sm text-gray-100 font-medium">
+              <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-emerald-500/25 text-emerald-300 font-mono text-xs font-bold border border-emerald-500/40">
+                {idx + 1}
+              </span>
+              <span class="pt-0.5">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-gray-800">
+        <div class="rounded bg-emerald-950/40 border border-emerald-500/40 p-3 text-center">
+          <p class="text-xs sm:text-sm font-bold text-emerald-300">
+            核心：{CH02_CONTENT.core}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

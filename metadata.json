@@ -1,0 +1,6 @@
+{
+  "name": "登山隊伍管理與安全決策｜亞馬遜國家山岳協會",
+  "description": "登山領隊訓練教材：從隊伍規模評估、隊伍編排、角色分工到風險管理與緊急應變，透過比較表、流程圖、決策樹與案例分析，建立領隊面對問題時的判斷與決策能力。隊伍安全不是人數問題，而是管理能力問題。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

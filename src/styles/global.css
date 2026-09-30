@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --bg-color: #0b0f14;
+  --surface-color: #121820;
+  --surface-muted: #17202a;
+  --border-color: #232d3b;
+  --text-main: #f9fafb;
+  --text-muted: #d1d5db;
+  --text-dim: #9ca3af;
+  
+  --primary: #34d399;
+  --primary-bg: rgba(52, 211, 153, 0.15);
+  --primary-border: rgba(52, 211, 153, 0.4);
+  
+  --accent: #fbbf24;
+  --accent-bg: rgba(251, 191, 36, 0.15);
+  --accent-border: rgba(251, 191, 36, 0.4);
+
+  --alpine: #38bdf8;
+  --alpine-bg: rgba(56, 189, 248, 0.15);
+  --alpine-border: rgba(56, 189, 248, 0.4);
+
+  --danger: #f87171;
+  --danger-bg: rgba(248, 113, 113, 0.15);
+  --danger-border: rgba(248, 113, 113, 0.4);
+
+  --ok: #34d399;
+  --ok-bg: rgba(52, 211, 153, 0.15);
+  --ok-border: rgba(52, 211, 153, 0.4);
+}
+
+html {
+  color-scheme: dark;
+  font-family: var(--font-sans);
+  background-color: #0b0f14;
+  color: #f9fafb;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #0b0f14;
+  color: #f9fafb;
+  line-height: 1.65;
+}
+
+/* Card / Bento Containers */
+.bento-card {
+  background-color: #121820;
+  border: 1px solid #232d3b;
+  border-radius: 0.5rem;
+}
+
+/* Custom details accordion styling */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] summary .toggle-icon {
+  transform: rotate(45deg);
+}
+
+/* Print Stylesheet */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body, html {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .bento-card {
+    background-color: #ffffff !important;
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  details {
+    display: block !important;
+  }
+  details[open] .case-answer, details:not([open]) .case-answer {
+    display: block !important;
+  }
+  details summary .toggle-icon {
+    display: none !important;
+  }
+
+  table, tr, section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+  }
+}

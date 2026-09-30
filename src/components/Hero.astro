@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero.jpg';
+import { HERO_CONTENT, NAV_ITEMS } from '../data/content';
+---
+
+<div class="relative overflow-hidden border-b border-gray-800">
+  <Image
+    src={heroImage}
+    alt={HERO_CONTENT.imageAlt}
+    width={1920}
+    height={1088}
+    fetchpriority="high"
+    loading="eager"
+    class="absolute inset-0 size-full object-cover opacity-35"
+  />
+  <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f14] via-[#0b0f14]/80 to-[#0b0f14]/40" />
+
+  <div class="relative mx-auto max-w-6xl px-4 py-14 sm:py-20 md:py-24">
+    <div class="flex flex-wrap gap-2">
+      <span class="rounded-full border border-emerald-500/40 bg-emerald-500/15 px-3 py-1 font-mono text-[11px] font-bold tracking-widest text-emerald-300">
+        {HERO_CONTENT.badges[0]}
+      </span>
+      <span class="rounded-full border border-gray-600 bg-gray-800/90 px-3 py-1 font-mono text-[11px] font-bold tracking-widest text-gray-200">
+        {HERO_CONTENT.badges[1]}
+      </span>
+    </div>
+
+    <p class="mt-6 text-sm font-bold tracking-widest text-amber-300">
+      {HERO_CONTENT.brand}
+    </p>
+
+    <h1 class="mt-2 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+      {HERO_CONTENT.h1}
+    </h1>
+
+    <p class="mt-4 max-w-2xl text-base leading-relaxed text-gray-100 font-medium md:text-lg">
+      {HERO_CONTENT.subtitle}
+    </p>
+
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-gray-200">
+      {HERO_CONTENT.description}
+    </p>
+
+    <nav aria-label="章節目錄" class="no-print mt-10">
+      <h2 class="sr-only">章節快速導覽</h2>
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+        {NAV_ITEMS.map((item) => (
+          <a
+            href={`#${item.id}`}
+            class="rounded-md border border-gray-700 bg-[#121820] px-3 py-2.5 text-xs font-medium text-gray-200 transition-colors hover:border-emerald-400 hover:text-emerald-300 hover:bg-[#17202a] focus:outline-none focus:ring-2 focus:ring-emerald-400"
+          >
+            <span class="font-mono text-xs font-bold text-emerald-400 mr-2">{item.no}</span>
+            <span>{item.title}</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+  </div>
+</div>

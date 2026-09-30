@@ -1,0 +1,53 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { CH04_CONTENT } from '../data/content';
+---
+
+<section id={CH04_CONTENT.id} class="pt-12 scroll-mt-20">
+  <SectionHeader no={CH04_CONTENT.no} title={CH04_CONTENT.title} lead={CH04_CONTENT.lead} />
+
+  <div class="grid gap-4 md:grid-cols-2">
+    {CH04_CONTENT.challenges.map((item) => (
+      <div class="bento-card p-5 bg-[#121820] border-[#232d3b] flex flex-col justify-between">
+        <div>
+          <div class="font-mono text-xs font-bold tracking-wider text-amber-400">
+            CHALLENGE
+          </div>
+          <h3 class="mt-1 text-base font-bold text-white">{item.title}</h3>
+
+          <div class="mt-4 space-y-3">
+            <div class="rounded bg-red-950/40 p-3.5 border border-red-500/40">
+              <div class="font-mono text-xs font-bold text-red-300 mb-2 flex items-center gap-1.5">
+                <span class="inline-block size-2 rounded-full bg-red-400"></span>
+                <span>問題</span>
+              </div>
+              <ul class="space-y-1.5 text-xs text-red-100 font-semibold">
+                {item.problem.map((prob) => (
+                  <li class="flex items-center gap-2">
+                    <span class="text-red-400 font-bold">✕</span>
+                    <span>{prob}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="rounded bg-emerald-950/40 p-3.5 border border-emerald-500/40">
+              <div class="font-mono text-xs font-bold text-emerald-300 mb-2 flex items-center gap-1.5">
+                <span class="inline-block size-2 rounded-full bg-emerald-400"></span>
+                <span>管理</span>
+              </div>
+              <ul class="space-y-1.5 text-xs text-emerald-100 font-semibold">
+                {item.manage.map((mng) => (
+                  <li class="flex items-center gap-2">
+                    <span class="text-emerald-400 font-bold">✔</span>
+                    <span>{mng}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

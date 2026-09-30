@@ -1,0 +1,57 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { CH08_CONTENT } from '../data/content';
+---
+
+<section id={CH08_CONTENT.id} class="pt-12 scroll-mt-20">
+  <SectionHeader no={CH08_CONTENT.no} title={CH08_CONTENT.title} lead={CH08_CONTENT.lead} />
+
+  <div class="grid gap-4 lg:grid-cols-3">
+    <!-- SCENARIO Card -->
+    <div class="bento-card p-5 bg-[#121820] border-[#232d3b] flex flex-col justify-between">
+      <div>
+        <div class="font-mono text-xs font-bold tracking-wider text-amber-400">
+          SCENARIO
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-white">{CH08_CONTENT.scenarioTitle}</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          {CH08_CONTENT.scenarioItems.map((item) => (
+            <li class="flex items-center gap-2 rounded bg-[#17202a] px-3 py-2 border border-gray-800 text-gray-100 font-medium">
+              <span class="size-2 rounded-full bg-emerald-400 shrink-0"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="mt-5 pt-3 border-t border-gray-800">
+        <p class="text-xs leading-relaxed text-gray-200 font-medium">
+          {CH08_CONTENT.hint}
+        </p>
+      </div>
+    </div>
+
+    <!-- Questions list using native <details>/<summary> -->
+    <div class="lg:col-span-2 space-y-3">
+      {CH08_CONTENT.qaList.map((item, idx) => (
+        <details class="bento-card overflow-hidden bg-[#121820] border-[#232d3b] group transition-colors">
+          <summary class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left hover:bg-gray-800/60 select-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-emerald-500">
+            <span class="flex items-center gap-3 text-sm font-bold text-white md:text-base">
+              <span class="font-mono text-xs text-emerald-400 font-bold bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">Q{idx + 1}</span>
+              <span>{item.q}</span>
+            </span>
+            <span class="toggle-icon shrink-0 font-mono text-base font-bold text-emerald-400 transition-transform duration-200" aria-hidden="true">
+              ＋
+            </span>
+          </summary>
+          <div class="case-answer border-t border-gray-800 px-5 py-4 text-sm leading-relaxed text-gray-100 bg-[#0e141b]">
+            <span class="mr-2 inline-block rounded bg-emerald-950/60 border border-emerald-500/40 px-2 py-0.5 font-mono text-xs font-bold tracking-wider text-emerald-300">
+              建議答案
+            </span>
+            <span class="font-normal">{item.a}</span>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
